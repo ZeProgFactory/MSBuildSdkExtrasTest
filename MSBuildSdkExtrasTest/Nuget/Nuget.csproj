@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;MonoAndroid81;Xamarin.iOS10;uap10.0.15063</TargetFrameworks>
+    <AssemblyName>Nuget</AssemblyName>
+    <RootNamespace>Nuget</RootNamespace>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
+    <Version>1.0.0.0</Version>
+    <Authors>James Montemagno</Authors>
+    <PackageId>Xam.Plugins.Nuget</PackageId>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageIconUrl>https://raw.githubusercontent.com/jamesmontemagno/NugetPlugin/master/art/icon_small.png</PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest/blob/master/LICENSE</PackageLicenseUrl>
+    <Owners>JamesMontemagno</Owners>
+    <PackageProjectUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest</PackageProjectUrl>
+    <Summary>Xamarin and Windows plugin to Nuget your device.</Summary>
+    <PackageTags>xamarin, xamarin.forms, plugin, plugin for xamarin, Nuget, Nuget plugin, ios, android, uwp, tizen</PackageTags>
+    <Title>Nuget Plugin for Xamarin and Windows</Title>
+    <Description>
+      Xamarin and Windows plugin to Nuget your devices.
+      Read the full documenation on the projects page.
+    </Description>
+    <Copyright>Copyright 2018</Copyright>
+    <RepositoryUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest</RepositoryUrl>
+    <PackageReleaseNotes>See: https://github.com/ZeProgFactory/MSBuildSdkExtrasTest </PackageReleaseNotes>
+
+    <NeutralLanguage>en</NeutralLanguage>
+    <LangVersion>default</LangVersion>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+
+
+    <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
+    <!-- Workaround until Xamarin supports PPDB -->
+    <UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+    <DebugType>full</DebugType>
+
+    <DefineConstants>$(DefineConstants);</DefineConstants>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.4.0" PrivateAssets="All" />
+		<Compile Include="**\*.shared.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.15063' ">
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="5.2.3" />
+    <SDKReference Include="WindowsDesktop, Version=10.0.15063.0">
+      <Name>Windows Desktop Extensions for the UWP</Name>
+    </SDKReference>
+    <SDKReference Include="WindowsMobile, Version=10.0.15063.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
+    <Compile Include="**\*.UWP.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'MonoAndroid81' ">
+    <Compile Include="**\*.Android.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'Xamarin.iOS10' ">
+    <Compile Include="**\*iOS.cs" />
+  </ItemGroup>
+
+
+  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
+</Project>
