@@ -114,6 +114,10 @@
       <Project>{50992366-553F-495C-8864-2F09601371CD}</Project>
       <Name>MSBuildSdkExtrasTest</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nuget\ZeNuget.csproj">
+      <Project>{ABA3225C-7219-4472-BA3E-CFC3D9C06675}</Project>
+      <Name>ZeNuget</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
