@@ -5,7 +5,7 @@ namespace ZPF
    /// <summary>
    /// 
    /// </summary>
-   public static class CrosNuget
+   public static class Nuget
    {
       static Lazy<INuget> implementation = new Lazy<INuget>(() => CreateNuget(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
 
@@ -33,9 +33,9 @@ namespace ZPF
       static INuget CreateNuget()
       {
 #if NETSTANDARD1_0 || NETSTANDARD2_0
-            return null;
+         return null;
 #else
-         return new Nuget();
+         return new NugetImplementation();
 #endif
       }
 

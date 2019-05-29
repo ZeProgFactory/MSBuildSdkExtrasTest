@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using ZPF;
 
 namespace MSBuildSdkExtrasTest
 {
@@ -16,6 +17,8 @@ namespace MSBuildSdkExtrasTest
       public MainPage()
       {
          InitializeComponent();
+
+         label.Text = CrossNuget.Current.Info;
       }
    }
 }
