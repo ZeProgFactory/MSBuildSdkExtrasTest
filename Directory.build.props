@@ -1,0 +1,57 @@
+<Project>
+   <PropertyGroup>
+      <Copyright>Copyright (c) Michael Engelmann</Copyright>
+      <PackageLicenseExpression>MIT</PackageLicenseExpression>
+      <PackageProjectUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest</PackageProjectUrl>
+      <PackageIconUrl>https://raw.githubusercontent.com/ZeProgFactory/MediaPlayer/master/docs/ZeProgramFactory.Square.BG.png</PackageIconUrl>
+      <Authors>Michael Engelmann</Authors>
+      <Owners>Michael Engelmann</Owners>
+      <PackageTags>xamarin, android, plugin</PackageTags>
+      <PackageReleaseNotes>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest</PackageReleaseNotes>
+      <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+      <PublishRepositoryUrl>true</PublishRepositoryUrl>
+      <RepositoryUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest</RepositoryUrl>
+      <RepositoryType>git</RepositoryType>
+      <Product>$(AssemblyName) ($(TargetFramework))</Product>
+      <NeutralLanguage>en</NeutralLanguage>
+      <Version>0.1.0</Version>
+
+      <LangVersion>latest</LangVersion>
+      <NoWarn>$(NoWarn);1591;1701;1702;1705;VSX1000;NU1603</NoWarn>
+      <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
+      <GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' and '$(IsTestProject)' != 'true'">true</GeneratePackageOnBuild>
+
+      <Platform>AnyCPU</Platform>
+      <DebugType>full</DebugType>
+      <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+      <EmbedUntrackedSources>true</EmbedUntrackedSources>
+      <!--<IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>-->
+
+      <IsTestProject>$(MSBuildProjectName.Contains('UnitTest'))</IsTestProject>
+      <IsLibraryProject>$(MSBuildProjectName.Contains('MediaManager'))</IsLibraryProject>
+   </PropertyGroup>
+
+   <ItemGroup Condition="'$(IsLibraryProject)' == 'true'">
+      <PackageReference Include="Microsoft.CSharp" Version="4.5.0" PrivateAssets="All" />
+      <None Include="$(MSBuildThisFileDirectory)\LICENSE" Pack="true" PackagePath=""/>
+   </ItemGroup>
+
+   <ItemGroup Condition="'$(IsTestProject)' != 'true' and '$(SourceLinkEnabled)' != 'false' and '$(IsLibraryProject)' == 'true'">
+      <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.3" PrivateAssets="All" />
+      <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-18618-05" PrivateAssets="All" />
+   </ItemGroup>
+
+   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <TargetsToBuild>All</TargetsToBuild>
+      <!--<TargetsToBuild>Android</TargetsToBuild>-->
+      <!--<TargetsToBuild>Uap</TargetsToBuild>-->
+      <!--<TargetsToBuild>iOS</TargetsToBuild>-->
+      <!--<TargetsToBuild>Apple</TargetsToBuild>-->
+   </PropertyGroup>
+
+   <PropertyGroup Condition=" '$(Configuration)' != 'Debug' ">
+      <TargetsToBuild>All</TargetsToBuild>
+   </PropertyGroup>
+
+</Project>

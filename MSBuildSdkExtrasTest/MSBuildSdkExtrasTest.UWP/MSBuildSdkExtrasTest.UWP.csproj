@@ -152,6 +152,10 @@
       <Project>{185843B1-E03B-4B1A-B25A-B3122EE7D30F}</Project>
       <Name>MSBuildSdkExtrasTest</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nuget\ZeNuget.csproj">
+      <Project>{aba3225c-7219-4472-ba3e-cfc3d9c06675}</Project>
+      <Name>ZeNuget</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

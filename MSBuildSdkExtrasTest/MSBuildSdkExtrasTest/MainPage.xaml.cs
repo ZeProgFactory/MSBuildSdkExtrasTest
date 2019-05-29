@@ -18,7 +18,7 @@ namespace MSBuildSdkExtrasTest
       {
          InitializeComponent();
 
-         label.Text = CrossNuget.Current.Info;
+         label.Text = Nuget.Current.Info;
       }
    }
 }
