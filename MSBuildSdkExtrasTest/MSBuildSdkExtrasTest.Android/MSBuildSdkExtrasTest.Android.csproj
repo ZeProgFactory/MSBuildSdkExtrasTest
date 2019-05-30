@@ -101,6 +101,10 @@
       <Project>{50992366-553F-495C-8864-2F09601371CD}</Project>
       <Name>MSBuildSdkExtrasTest</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nuget\ZeNuget.csproj">
+      <Project>{aba3225c-7219-4472-ba3e-cfc3d9c06675}</Project>
+      <Name>ZeNuget</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
