@@ -19,9 +19,13 @@
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
   </PropertyGroup>
 
-  <PropertyGroup Condition="$(TargetFramework.StartsWith('uap'))">
-    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  <PropertyGroup>
+      <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
   </PropertyGroup>
+
+  <!-- <PropertyGroup Condition="$(TargetFramework.StartsWith('uap'))">
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup> -->
   
   <ItemGroup>
     <Compile Remove="Platforms\**\*.cs" />
@@ -41,18 +45,11 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'!='netstandard2.0'">
-    <Compile Include="Platforms\Shared\**\*.cs" />
+    <Compile Include="Platforms\_Shared_\**\*.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('uap')) ">
-    <Compile Include="Platforms\Windows\**\*.cs" />
     <Compile Include="Platforms\Uap\**\*.cs" />
-    <Compile Condition=" '$(OS)' == 'Windows_NT' " Include="Platforms\Uap\**\*.cs" />
-    <Compile Update="Platforms\Uap\**\*.xaml.cs" DependentUpon="%(Filename)" />
-    <Page Include="Platforms\Uap\**\*.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
@@ -83,10 +80,6 @@
     <Compile Include="Platforms\Android\**\*.cs" />
     <Compile Include="Platforms\Xamarin\**\*.cs" />
     <AndroidResource Include="Resources\**\*.xml" SubType="Designer" Generator="MSBuild:UpdateAndroidResources" />
-    <PackageReference Include="Xam.Plugins.Android.ExoPlayer" Version="2.8.8" />    
-    <!--<PackageReference Include="Xam.Plugins.Android.ExoPlayer.Cast" Version="2.8.8" />
-    <PackageReference Include="Xam.Plugins.Android.ExoPlayer.Leanback" Version="2.8.8" />-->
-    <PackageReference Include="Xam.Plugins.Android.ExoPlayer.MediaSession" Version="2.8.8" />
     <PackageReference Include="Xamarin.Build.Download" Version="0.4.11" PrivateAssets="All" />
   </ItemGroup>
 
