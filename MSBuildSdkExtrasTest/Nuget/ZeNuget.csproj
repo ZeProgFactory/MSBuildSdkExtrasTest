@@ -1,25 +1,24 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/1.6.61">
 	<PropertyGroup>
 		<!-- <TargetFrameworks>netstandard1.0;netstandard2.0;MonoAndroid70;MonoAndroid71;MonoAndroid80;MonoAndroid81;MonoAndroid90;Xamarin.iOS10;uap10.0.16299;Tizen40</TargetFrameworks> -->
-		<TargetFrameworks>netstandard1.0;netstandard2.0;MonoAndroid81;Xamarin.iOS10;Xamarin.Mac20;uap10.0.16299;Tizen40</TargetFrameworks>
+		<TargetFrameworks>netstandard1.0;netstandard2.0;MonoAndroid81;Xamarin.iOS10;Xamarin.Mac20;uap10.0.16299;net471</TargetFrameworks>
 		<AssemblyName>ZeNuget</AssemblyName>
 		<RootNamespace>ZeNuget</RootNamespace>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
-		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<AssemblyVersion>0.1.0.0</AssemblyVersion>
 		<AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
-		<Version>1.0.0.0</Version>
+		<Version>0.1.0</Version>
 		<Authors>Michael Engelmann</Authors>
 		<PackageId>ZeNuget</PackageId>
 		<PackOnBuild>true</PackOnBuild>
-		<PackageIconUrl>http://www.refractored.com/images/plugin_icon_media.png</PackageIconUrl>
-		<PackageLicenseUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest/blob/master/LICENSE</PackageLicenseUrl>
+		<PackageIconUrl>https://raw.githubusercontent.com/ZeProgFactory/MediaPlayer/master/docs/ZeProgramFactory.Square.BG.png</PackageIconUrl>
+		<PackageLicenseUrl></PackageLicenseUrl>
 		<Owners>Michael Engelmann</Owners>
 		<PackageProjectUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest</PackageProjectUrl>
 		<Summary>Summary ...</Summary>
 		<PackageTags>tags ...</PackageTags>
 		<Title>Title ...</Title>
-		<Description>
-			Description ...
+		<Description>Description ...
 		</Description>
 		<Copyright>Copyright 2019</Copyright>
 		<RepositoryUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest</RepositoryUrl>
@@ -30,6 +29,8 @@
 		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
 		<DebugType>portable</DebugType>
 		<DefineConstants>$(DefineConstants);</DefineConstants>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<RepositoryType>git</RepositoryType>
 
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
@@ -73,10 +74,7 @@
 		<Compile Include="**\MacOS\*.cs" />
 	</ItemGroup>
 	
-	<ItemGroup Condition=" $(TargetFramework.StartsWith('Tizen')) ">
-		<Compile Include="**\Tizen\*.cs" />
-		<PackageReference Include="Tizen.NET" Version="4.0.0">
-			<ExcludeAssets>Runtime</ExcludeAssets>
-		</PackageReference>
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('net4')) ">
+		<Compile Include="**\WPF\*.cs" />
 	</ItemGroup>
 </Project>

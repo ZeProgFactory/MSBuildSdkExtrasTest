@@ -129,6 +129,10 @@
       <Project>{50992366-553f-495c-8864-2f09601371cd}</Project>
       <Name>MSBuildSdkExtrasTest</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nuget\ZeNuget.csproj">
+      <Project>{aba3225c-7219-4472-ba3e-cfc3d9c06675}</Project>
+      <Name>ZeNuget</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
