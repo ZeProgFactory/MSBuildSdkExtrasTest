@@ -1,91 +1,78 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras">
-  <PropertyGroup Condition=" '$(TargetsToBuild)' == 'All' ">
-    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;Xamarin.TVOS10;MonoAndroid90;tizen40;uap10.0.16299</TargetFrameworks>
-    <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;Xamarin.TVOS10;MonoAndroid90;tizen40</TargetFrameworks>
-  </PropertyGroup>
+﻿<Project Sdk="MSBuild.Sdk.Extras/1.6.61">
+	<PropertyGroup>
+		<!-- <TargetFrameworks>netstandard1.0;netstandard2.0;MonoAndroid70;MonoAndroid71;MonoAndroid80;MonoAndroid81;MonoAndroid90;Xamarin.iOS10;uap10.0.16299;Tizen40</TargetFrameworks> -->
+		<TargetFrameworks>netstandard1.0;netstandard2.0;MonoAndroid81;Xamarin.iOS10;uap10.0.16299;Tizen40</TargetFrameworks>
+		<AssemblyName>Plugin.Media</AssemblyName>
+		<RootNamespace>Plugin.Media</RootNamespace>
+		<Product>$(AssemblyName) ($(TargetFramework))</Product>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
+		<Version>1.0.0.0</Version>
+		<Authors>Michael Engelmann</Authors>
+		<PackageId>Xam.Plugin.Media</PackageId>
+		<PackOnBuild>true</PackOnBuild>
+		<PackageIconUrl>http://www.refractored.com/images/plugin_icon_media.png</PackageIconUrl>
+		<PackageLicenseUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest/blob/master/LICENSE</PackageLicenseUrl>
+		<Owners>Michael Engelmann</Owners>
+		<PackageProjectUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest</PackageProjectUrl>
+		<Summary>Summary ...</Summary>
+		<PackageTags>tags ...</PackageTags>
+		<Title>Title ...</Title>
+		<Description>
+			Description ...
+		</Description>
+		<Copyright>Copyright 2019</Copyright>
+		<RepositoryUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest</RepositoryUrl>
+		<PackageReleaseNotes>See: https://github.com/ZeProgFactory/MSBuildSdkExtrasTest </PackageReleaseNotes>
 
-  <PropertyGroup Condition=" '$(TargetsToBuild)' != 'All' ">
-    <TargetFrameworks Condition=" '$(TargetsToBuild)' == 'Android' ">netstandard2.0;MonoAndroid90;</TargetFrameworks>
-    <TargetFrameworks Condition=" '$(TargetsToBuild)' == 'Uap' ">netstandard2.0;uap10.0.16299</TargetFrameworks>
-    <TargetFrameworks Condition=" '$(TargetsToBuild)' == 'iOS' ">netstandard2.0;Xamarin.iOS10</TargetFrameworks>
-    <TargetFrameworks Condition=" '$(TargetsToBuild)' == 'Apple' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;Xamarin.TVOS10</TargetFrameworks>
-  </PropertyGroup>
-  
-  <PropertyGroup>
-    <AssemblyName>ZeNuget</AssemblyName>
-    <RootNamespace>ZeNuget</RootNamespace>
-    <PackageId>ZeNuget</PackageId>
-    <Description>Cross platform Xamarin plugin to play and control Audio and Video</Description>
-    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
-  </PropertyGroup>
+		<NeutralLanguage>en</NeutralLanguage>
+		<LangVersion>default</LangVersion>
+		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+		<DebugType>portable</DebugType>
+		<DefineConstants>$(DefineConstants);</DefineConstants>
 
-  <PropertyGroup>
-      <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
-  </PropertyGroup>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
+		<DebugSymbols>true</DebugSymbols>
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)'=='Release' ">
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<!-- sourcelink: Declare that the Repository URL can be published to NuSpec -->
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<!-- sourcelink: Embed source files that are not tracked by the source control manager to the PDB -->
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<!-- sourcelink: Include PDB in the built .nupkg -->
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
+	<ItemGroup Condition=" '$(Configuration)'=='Release' ">
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-18618-05" PrivateAssets="All" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<Compile Include="**\_Shared_\*.cs" />
+	</ItemGroup>
 
-  <!-- <PropertyGroup Condition="$(TargetFramework.StartsWith('uap'))">
-    <GenerateLibraryLayout>true</GenerateLibraryLayout>
-  </PropertyGroup> -->
-  
-  <ItemGroup>
-    <Compile Remove="Platforms\**\*.cs" />
-    <None Include="Platforms\**\*.cs" />
-    <None Include="Resources\*.cs" />
-    <Compile Remove="Resources\*.cs" />
-    <None Include="readme.txt" pack="true" PackagePath="." />
-  </ItemGroup>
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
+	</ItemGroup>
 
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
-    <Compile Include="Platforms\Netstandard\**\*.cs" />
-  </ItemGroup>
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('uap10.0')) ">
+		<Compile Include="**\UWP\*.cs" />
+	</ItemGroup>
 
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('net4')) ">
-    <Compile Include="Platforms\Net\**\*.cs" />
-    <Compile Include="Platforms\Wpf\**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)'!='netstandard2.0'">
-    <Compile Include="Platforms\_Shared_\**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('uap')) ">
-    <Compile Include="Platforms\Uap\**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
-    <Compile Include="Platforms\Apple\**\*.cs" />
-    <Compile Include="Platforms\Ios\**\*.cs" />
-    <Compile Include="Platforms\Xamarin\**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
-    <Compile Include="Platforms\Apple\**\*.cs" />
-    <Compile Include="Platforms\Mac\**\*.cs" />
-    <Compile Include="Platforms\Xamarin\**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.TVOS')) ">
-    <Compile Include="Platforms\Apple\**\*.cs" />
-    <Compile Include="Platforms\Tvos\**\*.cs" />
-    <Compile Include="Platforms\Xamarin\**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.WatchOS')) ">
-    <Compile Include="Platforms\Apple\**\*.cs" />
-    <Compile Include="Platforms\Watchos\**\*.cs" />
-    <Compile Include="Platforms\Xamarin\**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
-    <Compile Include="Platforms\Android\**\*.cs" />
-    <Compile Include="Platforms\Xamarin\**\*.cs" />
-    <AndroidResource Include="Resources\**\*.xml" SubType="Designer" Generator="MSBuild:UpdateAndroidResources" />
-    <PackageReference Include="Xamarin.Build.Download" Version="0.4.11" PrivateAssets="All" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('tizen')) ">
-    <Compile Include="Platforms\Tizen\**\*.cs" />
-    <Compile Include="Platforms\Xamarin\**\*.cs" />
-  </ItemGroup>
-
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+		<Compile Include="**\Android\*.cs" />
+		<!-- <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.1" /> -->
+	</ItemGroup>
+	
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+		<Compile Include="**\iOS\*.cs" />
+	</ItemGroup>
+	
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('Tizen')) ">
+		<Compile Include="**\Tizen\*.cs" />
+		<PackageReference Include="Tizen.NET" Version="4.0.0">
+			<ExcludeAssets>Runtime</ExcludeAssets>
+		</PackageReference>
+	</ItemGroup>
 </Project>
