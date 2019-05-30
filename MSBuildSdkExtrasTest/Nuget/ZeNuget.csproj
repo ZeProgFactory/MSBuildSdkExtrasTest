@@ -1,15 +1,15 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/1.6.61">
 	<PropertyGroup>
 		<!-- <TargetFrameworks>netstandard1.0;netstandard2.0;MonoAndroid70;MonoAndroid71;MonoAndroid80;MonoAndroid81;MonoAndroid90;Xamarin.iOS10;uap10.0.16299;Tizen40</TargetFrameworks> -->
-		<TargetFrameworks>netstandard1.0;netstandard2.0;MonoAndroid81;Xamarin.iOS10;uap10.0.16299;Tizen40</TargetFrameworks>
-		<AssemblyName>Plugin.Media</AssemblyName>
-		<RootNamespace>Plugin.Media</RootNamespace>
+		<TargetFrameworks>netstandard1.0;netstandard2.0;MonoAndroid81;Xamarin.iOS10;Xamarin.Mac20;uap10.0.16299;Tizen40</TargetFrameworks>
+		<AssemblyName>ZeNuget</AssemblyName>
+		<RootNamespace>ZeNuget</RootNamespace>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
 		<AssemblyVersion>1.0.0.0</AssemblyVersion>
 		<AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
 		<Version>1.0.0.0</Version>
 		<Authors>Michael Engelmann</Authors>
-		<PackageId>Xam.Plugin.Media</PackageId>
+		<PackageId>ZeNuget</PackageId>
 		<PackOnBuild>true</PackOnBuild>
 		<PackageIconUrl>http://www.refractored.com/images/plugin_icon_media.png</PackageIconUrl>
 		<PackageLicenseUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest/blob/master/LICENSE</PackageLicenseUrl>
@@ -67,6 +67,10 @@
 	
 	<ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
 		<Compile Include="**\iOS\*.cs" />
+	</ItemGroup>
+	
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
+		<Compile Include="**\MacOS\*.cs" />
 	</ItemGroup>
 	
 	<ItemGroup Condition=" $(TargetFramework.StartsWith('Tizen')) ">
