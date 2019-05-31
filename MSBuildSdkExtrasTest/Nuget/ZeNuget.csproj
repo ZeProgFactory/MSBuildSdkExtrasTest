@@ -1,5 +1,4 @@
-﻿<!-- <Project Sdk="MSBuild.Sdk.Extras/1.6.61"> -->
-<Project Sdk="MSBuild.Sdk.Extras/1.6.47">
+﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.24">
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0;Xamarin.iOS10;Xamarin.Mac20</TargetFrameworks>
 		<AssemblyName>ZeNuget</AssemblyName>
