@@ -9,4 +9,4 @@ https://oren.codes/2017/08/29/use-all-tfms-with-sdk-style-projects-in-visual-stu
 Microsoft Visual Studio Professional 2017 Version 15.9.12   
 OK - Nuget - Android, iOS, MacOS, UWP, WPF
 
-Visual Studio Enterprise 2019 (Preview) for Mac Version 8.1 Preview (8.1 build 2460)
+NO - Visual Studio Enterprise 2019 (Preview) for Mac Version 8.1 Preview (8.1 build 2460)
