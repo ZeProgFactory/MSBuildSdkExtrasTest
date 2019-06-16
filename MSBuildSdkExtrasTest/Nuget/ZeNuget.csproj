@@ -1,83 +1,93 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.29">
 
-	<PropertyGroup>
-        <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">netstandard2.0;MonoAndroid81;Xamarin.iOS10;Xamarin.Mac20;uap10.0.16299;net471</TargetFrameworks>
-        <!-- <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid81</TargetFrameworks> -->
-        <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid81</TargetFrameworks>
-		<AssemblyName>ZeNuget</AssemblyName>
-		<RootNamespace>ZeNuget</RootNamespace>
-		<Product>$(AssemblyName) ($(TargetFramework))</Product>
-		<AssemblyVersion>0.1.0.0</AssemblyVersion>
-		<AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
-		<Version>0.1.0</Version>
-		<Authors>Michael Engelmann</Authors>
-		<PackageId>ZeNuget</PackageId>
-		<PackOnBuild>true</PackOnBuild>
-		<PackageIconUrl>https://raw.githubusercontent.com/ZeProgFactory/MediaPlayer/master/docs/ZeProgramFactory.Square.BG.png</PackageIconUrl>
-		<Owners>Michael Engelmann</Owners>
-		<PackageProjectUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest</PackageProjectUrl>
-		<Summary>Summary ...</Summary>
-		<PackageTags>tags ...</PackageTags>
-		<Title>Title ...</Title>
-		<Description>Description ...
-		</Description>
-		<Copyright>Copyright 2019</Copyright>
-		<RepositoryUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest</RepositoryUrl>
-		<PackageReleaseNotes>See: https://github.com/ZeProgFactory/MSBuildSdkExtrasTest </PackageReleaseNotes>
+   <PropertyGroup>
+      <!--VS2017-->
+      <!--<TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">netstandard2.0;MonoAndroid81;Xamarin.iOS10;Xamarin.Mac20;uap10.0.16299;net471</TargetFrameworks>-->
+      
+      <!--VS2019-->
+      <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;uap10.0.16299;net471</TargetFrameworks>
+      
+      <!--Bugs on VSfM-->
+      <!-- <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid81</TargetFrameworks> -->
 
-		<NeutralLanguage>en</NeutralLanguage>
-		<LangVersion>default</LangVersion>
-		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-		<DebugType>portable</DebugType>
-		<DefineConstants>$(DefineConstants);</DefineConstants>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<RepositoryType>git</RepositoryType>
-	</PropertyGroup>
+      <!--OK on VSfM-->
+      <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid81</TargetFrameworks>
+            
+      <AssemblyName>ZeNuget</AssemblyName>
+      <RootNamespace>ZeNuget</RootNamespace>
+      <Product>$(AssemblyName) ($(TargetFramework))</Product>
+      <AssemblyVersion>0.1.0.0</AssemblyVersion>
+      <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
+      <Version>0.1.0</Version>
+      <Authors>Michael Engelmann</Authors>
+      <PackageId>ZeNuget</PackageId>
+      <PackOnBuild>true</PackOnBuild>
+      <PackageIconUrl>https://raw.githubusercontent.com/ZeProgFactory/MediaPlayer/master/docs/ZeProgramFactory.Square.BG.png</PackageIconUrl>
+      <Owners>Michael Engelmann</Owners>
+      <PackageProjectUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest</PackageProjectUrl>
+      <Summary>Summary ...</Summary>
+      <PackageTags>tags ...</PackageTags>
+      <Title>Title ...</Title>
+      <Description>
+         Description ...
+      </Description>
+      <Copyright>Copyright 2019</Copyright>
+      <RepositoryUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest</RepositoryUrl>
+      <PackageReleaseNotes>See: https://github.com/ZeProgFactory/MSBuildSdkExtrasTest </PackageReleaseNotes>
 
-	<PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
-		<DebugSymbols>true</DebugSymbols>
-		<GenerateDocumentationFile>false</GenerateDocumentationFile>
-	</PropertyGroup>
+      <NeutralLanguage>en</NeutralLanguage>
+      <LangVersion>default</LangVersion>
+      <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+      <DebugType>portable</DebugType>
+      <DefineConstants>$(DefineConstants);</DefineConstants>
+      <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+      <RepositoryType>git</RepositoryType>
+   </PropertyGroup>
 
-	<PropertyGroup Condition=" '$(Configuration)'=='Release' ">
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<!-- sourcelink: Declare that the Repository URL can be published to NuSpec -->
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<!-- sourcelink: Embed source files that are not tracked by the source control manager to the PDB -->
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<!-- sourcelink: Include PDB in the built .nupkg -->
-		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-	</PropertyGroup>
+   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
+      <DebugSymbols>true</DebugSymbols>
+      <GenerateDocumentationFile>false</GenerateDocumentationFile>
+   </PropertyGroup>
 
-	<ItemGroup Condition=" '$(Configuration)'=='Release' ">
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-18618-05" PrivateAssets="All" />
-	</ItemGroup>
-	
-	<ItemGroup>
-		<Compile Include="**\_Shared_\*.cs" />
-	</ItemGroup>
+   <PropertyGroup Condition=" '$(Configuration)'=='Release' ">
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+      <!-- sourcelink: Declare that the Repository URL can be published to NuSpec -->
+      <PublishRepositoryUrl>true</PublishRepositoryUrl>
+      <!-- sourcelink: Embed source files that are not tracked by the source control manager to the PDB -->
+      <EmbedUntrackedSources>true</EmbedUntrackedSources>
+      <!-- sourcelink: Include PDB in the built .nupkg -->
+      <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+   </PropertyGroup>
 
-	<ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
-	</ItemGroup>
+   <ItemGroup Condition=" '$(Configuration)'=='Release' ">
+      <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-18618-05" PrivateAssets="All" />
+   </ItemGroup>
 
-	<ItemGroup Condition=" $(TargetFramework.StartsWith('uap10.0')) ">
-		<Compile Include="**\UWP\*.cs" />
-	</ItemGroup>
+   <ItemGroup>
+      <Compile Include="**\_Shared_\*.cs" />
+   </ItemGroup>
 
-	<ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
-		<Compile Include="**\Android\*.cs" />
-		<!-- <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.1" /> -->
-	</ItemGroup>
-	
-	<ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
-		<Compile Include="**\iOS\*.cs" />
-	</ItemGroup>
-	
-	<ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
-		<Compile Include="**\MacOS\*.cs" />
-	</ItemGroup>
-	
-	<ItemGroup Condition=" $(TargetFramework.StartsWith('net4')) ">
-		<Compile Include="**\WPF\*.cs" />
-	</ItemGroup>
+   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
+   </ItemGroup>
+
+   <ItemGroup Condition=" $(TargetFramework.StartsWith('uap10.0')) ">
+      <Compile Include="**\UWP\*.cs" />
+   </ItemGroup>
+
+   <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+      <Compile Include="**\Android\*.cs" />
+      <!-- <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.1" /> -->
+   </ItemGroup>
+
+   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+      <Compile Include="**\iOS\*.cs" />
+   </ItemGroup>
+
+   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
+      <Compile Include="**\MacOS\*.cs" />
+   </ItemGroup>
+
+   <ItemGroup Condition=" $(TargetFramework.StartsWith('net4')) ">
+      <Compile Include="**\WPF\*.cs" />
+   </ItemGroup>
 </Project>
