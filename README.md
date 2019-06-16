@@ -9,8 +9,8 @@ https://oren.codes/2017/08/29/use-all-tfms-with-sdk-style-projects-in-visual-stu
 # Current state (as of 16/06/2019)
 | Version | State | ... |
 | ------- |:-----:| --- |
-| Microsoft Visual Studio Professional 2017 Version 15.9.13 | OK | |
-| Microsoft Visual Studio Professional 2019 Version 16.1.3 | OK* | Mac for iOS, MacOS, UWP & WPF **still not for Android** |
+| Visual Studio Professional 2017 Version 15.9.13 | OK | Android, iOS, MacOS, UWP & WPF |
+| Visual Studio Professional 2019 Version 16.1.3 | OK* | Mac for iOS, MacOS, UWP & WPF **still not for Android** |
 | Visual Studio Enterprise 2019 (Preview) for Mac Version 8.2 Preview (8.2 build 732) | OK* | Mac for iOS & MacOS **still not for Android** |
 
 ##Error on VSfM for Android##
@@ -30,9 +30,9 @@ Error	MSB4044	The "GetAdditionalResourcesFromAssemblies" task was not given a va
 # Current state (as of 31/05/2019)
 | Version | State | ... |
 | ------- |:-----:| --- |
-| Microsoft Visual Studio Professional 2017 Version 15.9.12 | OK | Android, iOS, MacOS, UWP & WPF |
-| Microsoft Visual Studio Professional 2019 Version 16.1.1 | KO |  |
-| Microsoft Visual Studio Enterprise 2019 (Preview) for Mac Version 8.1 Preview (8.1 build 2460) | KO |   |   
+| Visual Studio Professional 2017 Version 15.9.12 | OK | Android, iOS, MacOS, UWP & WPF |
+| Visual Studio Professional 2019 Version 16.1.1 | KO |  |
+| Visual Studio Enterprise 2019 (Preview) for Mac Version 8.1 Preview (8.1 build 2460) | KO |   |   
 
 https://github.com/onovotny/MSBuildSdkExtras/issues/168
 https://developercommunity.visualstudio.com/content/problem/536913/vsfm-2019-doesnt-work-with-project-file-sdks-like.html
