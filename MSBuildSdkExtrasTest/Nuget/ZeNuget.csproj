@@ -1,11 +1,11 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.29">
+﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
 
    <PropertyGroup>
       <!--VS2017-->
       <!--<TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">netstandard2.0;MonoAndroid81;Xamarin.iOS10;Xamarin.Mac20;uap10.0.16299;net471</TargetFrameworks>-->
       
       <!--VS2019-->
-      <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;uap10.0.16299;net471</TargetFrameworks>
+      <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">net471;netstandard2.0;uap10.0.16299;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid81</TargetFrameworks>
       
       <!--Bugs on VSfM-->
       <!-- <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid81</TargetFrameworks> -->
@@ -28,9 +28,8 @@
       <Summary>Summary ...</Summary>
       <PackageTags>tags ...</PackageTags>
       <Title>Title ...</Title>
-      <Description>
-         Description ...
-      </Description>
+      <Description>Description ...
+</Description>
       <Copyright>Copyright 2019</Copyright>
       <RepositoryUrl>https://github.com/ZeProgFactory/MSBuildSdkExtrasTest</RepositoryUrl>
       <PackageReleaseNotes>See: https://github.com/ZeProgFactory/MSBuildSdkExtrasTest </PackageReleaseNotes>

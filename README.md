@@ -6,6 +6,14 @@ https://www.glennwatson.net/posts/first-post
 https://dansiegel.net/post/2018/08/21/demystifying-the-sdk-project  
 https://oren.codes/2017/08/29/use-all-tfms-with-sdk-style-projects-in-visual-studio-for-mac/  
   
+# Current state (as of 14/10/2019)
+Update to "MSBuild.Sdk.Extras/2.0.54"
+
+| Version | State | ... |
+| ------- |:-----:| --- |
+| Visual Studio Enterprise 2019 Version 16.3.4 | seams OK | Tested OK for: Android, UWP & WPF |
+
+
 # Current state (as of 16/06/2019)
 | Version | State | ... |
 | ------- |:-----:| --- |
