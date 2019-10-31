@@ -65,7 +65,8 @@
    <ItemGroup>
       <Compile Include="**\_Shared_\*.cs" />
       <!--<PackageReference Include="Xamarin.Forms" Version="4.2.0.910310" />-->
-      <PackageReference Include="Xamarin.Forms" Version="4.3.0.908675" />
+      <!--<PackageReference Include="Xamarin.Forms" Version="4.3.0.908675" />-->
+      <PackageReference Include="Xamarin.Forms" Version="4.3.0.947036" />
    </ItemGroup>
 
    <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
