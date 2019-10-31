@@ -64,8 +64,13 @@
 
    <ItemGroup>
       <Compile Include="**\_Shared_\*.cs" />
+      <!-- OK - clean before -->
       <!--<PackageReference Include="Xamarin.Forms" Version="4.2.0.910310" />-->
+      
+      <!-- KO -->
       <!--<PackageReference Include="Xamarin.Forms" Version="4.3.0.908675" />-->
+      
+      <!-- KO -->
       <PackageReference Include="Xamarin.Forms" Version="4.3.0.947036" />
    </ItemGroup>
 
